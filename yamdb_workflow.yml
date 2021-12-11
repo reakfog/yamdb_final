@@ -61,6 +61,8 @@ jobs:
               sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}:latest
               sudo docker-compose stop
               sudo docker-compose rm web
+              sudo docker-compose up -d
+              sudo docker-compose exec web bash
               cd infra
               touch .env
               echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
@@ -73,6 +75,7 @@ jobs:
               echo DB_PORT=${{ secrets.DB_PORT }} >> .env
               sudo docker-compose --file docker-compose.yaml up -d
               sudo docker-compose --file docker-compose.yaml exec web bash
+              cd ..
               python manage.py migrate --noinput
               python manage.py collectstatic --noinput
               exit
