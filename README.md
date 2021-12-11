@@ -1,4 +1,4 @@
-![example workflow](https://github.com/reakfog/yamdb_final/actions/workflows/yamdb_workflow/badge.svg)
+![example workflow](https://github.com/reakfog/yamdb_final/actions/workflows/yamdb_workflow.yaml/badge.svg)
 
 # Api Yamdb
 
