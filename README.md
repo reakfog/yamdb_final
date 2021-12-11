@@ -1,6 +1,8 @@
-![example workflow](https://github.com/reakfog/yandb_final/actions/workflows/yamdb_workflow/badge.svg)
+![example workflow](https://github.com/reakfog/yamdb_final/actions/workflows/yamdb_workflow/badge.svg)
 
 # Api Yamdb
+
+Автор: [Перчун Евгений](https://github.com/reakfog)
 
 REST API для сервиса **YaMDb**.
 База отзывов о фильмах, книгах и музыке.
