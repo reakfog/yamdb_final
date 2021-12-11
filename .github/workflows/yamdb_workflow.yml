@@ -63,21 +63,22 @@ jobs:
             sudo docker-compose rm web
             sudo docker-compose build
             sudo docker-compose up -d
-            sudo docker-compose exec -T web bash
-            cd infra
-            touch .env
-            echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
-            echo DEBUG=${{ secrets.DEBUG }} >> .env
-            echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
-            echo DB_NAME=${{ secrets.DB_NAME }} >> .env
-            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
-            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
-            echo DB_HOST=${{ secrets.DB_HOST }} >> .env
-            echo DB_PORT=${{ secrets.DB_PORT }} >> .env
-            cd ..
-            python manage.py migrate --noinput
-            python manage.py collectstatic --noinput
-            exit
+            sudo docker-compose exec -T web bash -c "
+              cd infra &&
+              touch .env &&
+              echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env &&
+              echo DEBUG=${{ secrets.DEBUG }} >> .env &&
+              echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env &&
+              echo DB_NAME=${{ secrets.DB_NAME }} >> .env &&
+              echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env &&
+              echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env &&
+              echo DB_HOST=${{ secrets.DB_HOST }} >> .env &&
+              echo DB_PORT=${{ secrets.DB_PORT }} >> .env &&
+              cd .. &&
+              python manage.py migrate -y --noinput &&
+              python manage.py collectstatic -y --noinput &&
+              exit
+            "
 
   send_message:
     runs-on: ubuntu-latest
