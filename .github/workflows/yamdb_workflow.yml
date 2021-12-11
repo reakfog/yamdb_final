@@ -61,7 +61,7 @@ jobs:
               sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}:latest
               sudo docker-compose stop
               sudo docker-compose rm web
-              sudo docker-compose up -d --build
+              sudo docker-compose up -d
               sudo docker-compose exec web bash
               cd infra
               touch .env
