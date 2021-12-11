@@ -1,6 +1,7 @@
 from rest_framework import serializers
-from ratings.models import Category, Genre, Title, Review, Comment
-from users.models import CustomUser, ConstUserRoles
+
+from ratings.models import Category, Comment, Genre, Review, Title
+from users.models import ConstUserRoles, CustomUser
 
 
 class UserSerializer(serializers.ModelSerializer):

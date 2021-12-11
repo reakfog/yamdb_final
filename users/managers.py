@@ -22,7 +22,7 @@ class CustomUserManager(BaseUserManager):
             username,
             password,
             **extra_fields)
-        return user
+        return user  # noqa: R504
 
     def create_superuser(self, email, username, password, **extra_fields):
         user = self._create_user(
@@ -31,5 +31,6 @@ class CustomUserManager(BaseUserManager):
             password,
             is_staff=True,
             is_superuser=True,
-            **extra_fields)
-        return user
+            **extra_fields
+        )
+        return user  # noqa: R504

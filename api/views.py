@@ -1,39 +1,22 @@
-from django.db.models import Max, Avg
+from django.db.models import Avg, Max
 from django.shortcuts import get_object_or_404
-from rest_framework import (
-    status,
-    permissions,
-    viewsets,
-    views,
-    filters,
-    serializers)
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import (filters, permissions, serializers, status, views,
+                            viewsets)
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
-from django_filters.rest_framework import DjangoFilterBackend
-from .utils import send_mail_to_user, generate_confirmation_code
-from .viewsets import CatGenViewSet
-from .filterset import TitleFilter
-from ratings.models import (
-    User,
-    Category,
-    Genre,
-    Title,
-    Review,
-    Comment)
-from .serializers import (
-    UserSerializer,
-    CategorySerializer,
-    GenreSerializer,
-    TitleSerializer,
-    ReviewSerializer,
-    CommentSerializer)
-from .permissions import (
-    IsAdmin,
-    IsAdminOrReadOnly,
-    IsSuperuser,
-    IsAuthorOrAdminOrModerator)
 
+from ratings.models import Category, Comment, Genre, Review, Title, User
+
+from .filterset import TitleFilter
+from .permissions import (IsAdmin, IsAdminOrReadOnly,
+                          IsAuthorOrAdminOrModerator, IsSuperuser)
+from .serializers import (CategorySerializer, CommentSerializer,
+                          GenreSerializer, ReviewSerializer, TitleSerializer,
+                          UserSerializer)
+from .utils import generate_confirmation_code, send_mail_to_user
+from .viewsets import CatGenViewSet
 
 BASE_USERNAME = 'User'
 
