@@ -75,8 +75,8 @@ jobs:
               echo DB_HOST=${{ secrets.DB_HOST }} >> .env &&
               echo DB_PORT=${{ secrets.DB_PORT }} >> .env &&
               cd .. &&
-              python manage.py migrate -y --noinput &&
-              python manage.py collectstatic -y --noinput &&
+              python manage.py migrate --noinput &&
+              python manage.py collectstatic --noinput &&
               exit
             "
 
