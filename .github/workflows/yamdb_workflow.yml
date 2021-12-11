@@ -71,8 +71,8 @@ jobs:
               echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
               echo DB_HOST=${{ secrets.DB_HOST }} >> .env
               echo DB_PORT=${{ secrets.DB_PORT }} >> .env
-              sudo docker-compose --file ./infra/docker-compose.yaml up -d
-              sudo docker-compose --file ./infra/docker-compose.yaml exec web bash
+              sudo docker-compose --file infra/docker-compose.yaml up -d
+              sudo docker-compose --file infra/docker-compose.yaml exec web bash
               python manage.py migrate --noinput
               python manage.py collectstatic --noinput
               exit
