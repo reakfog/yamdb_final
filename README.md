@@ -2,6 +2,7 @@
 
 # Api Yamdb
 
+Проект: [Yamdb](http://www.johnperchun.com/redoc/)
 Автор: [Перчун Евгений](https://github.com/reakfog)
 
 REST API для сервиса **YaMDb**.
